@@ -1,0 +1,4 @@
+# Development Requirements
+flake8>=6.0.0,<6.1.0
+black>=23.7.0,<23.8.0
+mongomock>=4.1.2,<4.2.0
