@@ -8,6 +8,9 @@ COPY ./requirements.txt /temp/requirements.txt
 COPY ./requirements.dev.txt /temp/requirements.dev.txt
 COPY ./app /app
 
+# Copy the .env file to the /app directory
+COPY ./.env /app/.env
+
 # Set the working directory
 WORKDIR /app
 EXPOSE 8000

@@ -6,15 +6,27 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
-    command: python manage.py runserver 0.0.0.0:8000
+      - ./.env:/app/.env
+    environment:
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_HOST=${MONGO_HOST:-mongodb}
+      - MONGO_PORT=${MONGO_PORT}
+      - MONGO_DB=${MONGO_DB}
+    command: >
+      python manage.py runserver 0.0.0.0:8000
     depends_on:
       - mongodb
+    env_file: .env
 
   mongodb:
     image: mongo:latest
     container_name: mongodb
     ports:
       - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=fms-user
+      - MONGO_INITDB_ROOT_PASSWORD=password123
     volumes:
       - mongo-data:/data/db
 

@@ -1,7 +1,10 @@
 # Form Management System Backend (FMS)
+- fms
+
 
 ## Description
     This project is an API for managing forms and form responses, built using Django Rest Framework and MongoEngine with MongoDB as the database.
+
 
 ## Features
 - Create, retrieve, update, and delete forms.
@@ -9,6 +12,16 @@
 ## Prerequisites
 - Docker
 - Docker Compose
+
+## Docker Setup Overview
+`docker-compose.yml` have two services:
+
+- **app**: Runs the Django server.
+- **mongodb**: MongoDB instance for database.
+
+- The **app** service runs Django using the `python manage.py runserver 0.0.0.0:8000`
+- The **mongodb** service runs MongoDB, exposed on port `27017`.
+
 
 ## Project Setup and Running
 
@@ -33,26 +46,10 @@
     docker-compose up --build
     ```
 
-4. **Access the API**:
-    - The API will be available at `http://localhost:8000/`.
-    - Example API endpoints:
-      - `http://localhost:8000/api/forms/`: List forms.
-      - `http://localhost:8000/api/forms/{id}/`: Retrieve, update, or delete a specific form.
-      - `http://localhost:8000/api/responses/`: List responses.
-      - `http://localhost:8000/api/responses/submit/`: Submit responses.
-
-
-## Docker Setup Overview
-
-- The **app** service runs Django using the `python manage.py runserver 0.0.0.0:8000` command inside the Docker container.
-- The **mongodb** service runs MongoDB, exposed on port `27017`.
-
-
-### Docker Compose Configuration
-
-Your `docker-compose.yml` sets up two services:
-- **app**: Runs the Django server and mounts your project directory for development.
-- **mongodb**: MongoDB instance for storing form data and responses.
+## Run Test
+    ```bash
+        docker-compose run --rm app python manage.py test
+    ```
 
 ## Endpoints
 
@@ -67,6 +64,7 @@ Your `docker-compose.yml` sets up two services:
 - `POST /api/responses/submit/`: Submit a response to a form.
 - `GET /api/responses/`: Retrieve all submitted responses.
 
+
 ## Technologies
 - **Django**: Python web framework.
 - **Django Rest Framework**: API creation with Django.
@@ -77,4 +75,6 @@ Your `docker-compose.yml` sets up two services:
 ## Development
 
 ### Separate Dev and Production Dependencies:
-    In the project, development dependencies are separated into `requirements.dev.txt`. For production, dependencies are seperated in `requirements.txt`.
+    In the project, development dependencies are separated into
+    - `requirements.dev.txt`. For Development
+    - `requirements.txt`. For Production
