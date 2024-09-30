@@ -20,6 +20,7 @@ ARG DEV=true
 
 # Install Python dependencies and MongoDB client, then delete temp files
 RUN python -m venv /py && \
+    /py/bin/pip install --upgrade pip setuptools && \
     /py/bin/pip install --upgrade pip && \
     apk add --update --no-cache mongodb-tools && \
     apk add --update --no-cache --virtual .temp-build-deps \

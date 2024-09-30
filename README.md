@@ -64,6 +64,9 @@
 - `POST /api/responses/submit/`: Submit a response to a form.
 - `GET /api/responses/`: Retrieve all submitted responses.
 
+### Swagger Docs:
+- `POST /api/swagger/`: Access API documentation on Swagger.
+
 
 ## Technologies
 - **Django**: Python web framework.
